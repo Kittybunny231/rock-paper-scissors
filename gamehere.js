@@ -24,3 +24,8 @@ if (humanChoice.match("Rock")) {
      else {
     console.log("not vaild");
  }
+
+ let computerScore = 0
+ let humanScore = 0 
+ console.log(computerScore)
+ console.log(humanScore)
