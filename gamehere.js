@@ -1,31 +1,68 @@
 
 function getComputerChoice(min, max) {
-     return Math.round(Math.random() * (10 - 1) + 1);
-}
 
-let compChoice = getComputerChoice();
+let compChoice =  Math.round(Math.random() * (10 - 1) + 1);
 
-if (compChoice % 3 === 0) {
-    console.log("Paper");
+
+if (compChoice % 3 === 0 || 2 === 0) {
+   return  "Paper";
     }  else if (compChoice % 4 === 0) {
-        console.log("Scissors");
-    } else  console.log(compChoice = "Rock");
+       return  "Scissors";
+    } else return "Rock"; 
+} //used fizz buzz to produce a random hand
 
-  let humanChoice = prompt("Please enter Rock, Paper or Scissors: ");
-
-if (humanChoice.match("Rock")) {
-    console.log(humanChoice);
- }  else if (humanChoice.match("Scissors")) {
-    console.log(humanChoice);
+ function getHumanChoice(){
+    let gameQuestion = prompt("Please enter Rock, Paper or Scissors: ")
+//iput for user
+if (gameQuestion.match( /Rock|ROCK|rock/g)) {
+    return  "Rock"
+ }  else if (gameQuestion.match(/Scissors|SCISSORS|scissors/g)) {
+   return "Scissors";
  }
-    else if (humanChoice.match("Paper")) {
-    console.log(humanChoice)
+    else if (gameQuestion.match(/Paper|PAPER|paper/g)) {
+   return "Paper";
  }
      else {
     console.log("not vaild");
  }
+ } //allows user to input any string reasonable for their hand 
 
  let computerScore = 0
  let humanScore = 0 
- console.log(computerScore)
- console.log(humanScore)
+ //hopefully sets the score to a zero int
+
+ const humanSelection = getHumanChoice();
+ const computerSelection = getComputerChoice();
+
+
+ console.log(humanSelection, computerSelection)
+
+function playRound(humanChoice, computerChoice) {
+
+    if (humanChoice === computerChoice) {
+        return "Tie, no winner, no points"; 
+    } else if (humanChoice.length === 4 && computerChoice.length === 8 ) {
+        return "Human  Wins"; 
+    } else if (humanChoice.length === 8 && computerChoice.length === 4) {
+        return "Human  Wins";
+    } else if (humanChoice.length === 5 && computerChoice.length === 4) {
+        return "Human  Wins";  
+    } else if (humanChoice.length === 4 && computerChoice.length === 5) {
+        return "Computer Wins"; 
+    } else if (humanChoice.length === 5 && computerChoice.length === 8) {
+        return "Computer Wins"; 
+    } else if (humanChoice.length === 8 && computerChoice.length === 5) {
+        return "Human Wins"; 
+    }
+    return "MumboJumbo"
+}
+//thats a round baby, uses strings to compare length for the hands,, luckily they are all dif numbers
+
+
+console.log(playRound(humanSelection, computerSelection));
+
+
+
+
+
+
